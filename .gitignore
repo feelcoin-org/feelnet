@@ -1,0 +1,14 @@
+.env
+.env.*
+*.key
+*.pem
+*.sqlite3
+*.db
+*.log
+__pycache__/
+.venv/
+venv/
+data/
+assets/live/
+*.mmdb
+*snapshot*.json

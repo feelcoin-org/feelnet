@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#05080d">
+<meta name="description" content="FeelNet — Feelcoin network intelligence, live peer observations and country-level atlas.">
+<title>Feelnet | Global Network Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700;750;800;900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="32x32" href="./assets/feelcoin-favicon-v2.png">
+<link rel="apple-touch-icon" href="./assets/feelcoin-touch-v2.png">
+<link rel="stylesheet" href="./assets/styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="./" aria-label="FeelNet home">
+      <img class="brand-logo" src="./assets/feelcoin-logo-v2.png" alt="Feelcoin logo">
+      <span class="brand-text"><strong>feel<span>net</span></strong><small>NETWORK INTELLIGENCE</small></span>
+    </a>
+    <div class="top-actions">
+      <span class="status-pill" id="dataStatus"><span class="statuslight"></span> Loading measurements</span>
+      <button class="icon-button" id="refresh" type="button" title="Refresh data" aria-label="Refresh dashboard">↻</button>
+      <a class="visit" href="https://feelcoin.org" target="_blank" rel="noopener noreferrer">Feelcoin.org <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</header>
+<main class="content" id="overview">
+  <div class="hero-top">
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="sparkle">✦</span> FEELCOIN <span class="thin">/</span> NETWORK INTELLIGENCE</div>
+      <h1>The network.<br><em>In motion.</em></h1>
+      <p>A live window into Feelcoin's blockchain, peer activity and network health.</p>
+    </div>
+    <div class="hero-aside">
+      <span class="scan-dot"></span>
+      <div><span class="pulse-heading">NETWORK PULSE</span><strong id="pulseLabel">Snapshot available</strong><small id="observedTime">Checking latest measurement…</small></div>
+    </div>
+  </div>
+
+  <section class="metrics" aria-label="Network statistics">
+    <article class="metric accent"><div class="metric-top"><span>OBSERVED PEERS</span><span class="metric-icon">◉</span></div><div class="metric-number" id="peers">—</div><div class="metric-note"><span class="mini-led"></span> Across two observers</div></article>
+    <article class="metric"><div class="metric-top"><span>P2P CONNECTIONS</span><span class="metric-icon">↗</span></div><div class="metric-number" id="connections">—</div><div class="metric-note">Current connection total</div></article>
+    <article class="metric"><div class="metric-top"><span>SYNCED NODES</span><span class="metric-icon">⌘</span></div><div class="metric-number" id="synced">—</div><div class="metric-note">Monitored nodes</div></article>
+    <article class="metric"><div class="metric-top"><span>CHAIN HEIGHT</span><span class="metric-icon">▣</span></div><div class="metric-number" id="height">—</div><div class="metric-note">Latest observed height</div></article>
+  </section>
+
+  <section class="atlas-panel" id="atlas" aria-labelledby="atlas-title">
+    <div class="panel-bar map-bar"><div><div class="section-overline">GLOBAL NETWORK</div><h2 id="atlas-title">Feelnet Atlas <span class="atlas-v13">/ CONNECTED</span></h2></div><div class="panel-tool"><span class="amber-dot"></span><span id="mapStatus">Loading geographic data</span></div></div>
+    <div class="atlas-stage">
+      <div class="map-graticule"></div><div class="map-shine"></div>
+      <img class="world" src="./assets/world.svg" alt="World atlas backdrop">
+      <svg class="topology" viewBox="0 0 1120 510" preserveAspectRatio="xMidYMid meet" aria-label="Illustrative animated network topology">
+        <defs><linearGradient id="arc" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#dfb45c" stop-opacity=".08"/><stop offset=".55" stop-color="#ffdf8b" stop-opacity=".72"/><stop offset="1" stop-color="#dfb45c" stop-opacity=".1"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="3.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+        <g class="topology-lines" fill="none" stroke="url(#arc)" stroke-width="1.5"><path d="M160 185 Q400 12 570 153"/><path d="M570 153 Q680 55 868 176"/><path d="M570 153 Q582 282 718 315"/><path d="M160 185 Q264 280 322 336"/><path d="M718 315 Q825 235 868 176"/><path d="M868 176 Q937 248 951 325"/><path d="M322 336 Q535 421 718 315"/><path d="M570 153 Q375 130 160 185"/></g>
+        <g class="signals" fill="none" stroke="#ffdf8b" stroke-width="2.4" stroke-linecap="round" opacity=".76"><path pathLength="100" d="M160 185 Q400 12 570 153"/><path pathLength="100" d="M570 153 Q680 55 868 176"/><path pathLength="100" d="M570 153 Q582 282 718 315"/><path pathLength="100" d="M322 336 Q535 421 718 315"/></g>
+        <g class="topology-points" fill="#ffce75" filter="url(#glow)"><circle cx="160" cy="185" r="4"/><circle cx="570" cy="153" r="5"/><circle cx="868" cy="176" r="4"/><circle cx="322" cy="336" r="3.5"/><circle cx="718" cy="315" r="4.5"/><circle cx="951" cy="325" r="3"/></g>
+        <g class="soft-halos" fill="none" stroke="#dfb45c" stroke-width="1"><circle cx="570" cy="153" r="15"/><circle cx="868" cy="176" r="13"/><circle cx="718" cy="315" r="15"/></g>
+      </svg>
+      <svg id="geoMarkers" class="geo-markers" viewBox="0 0 1120 510" preserveAspectRatio="xMidYMid meet" aria-label="Observed country locations with animated decorative routes"></svg>
+      <div id="geoInspector" class="geo-inspector" aria-live="polite" hidden>
+        <span class="geo-inspector-eyebrow">COUNTRY OBSERVATIONS</span>
+        <strong id="geoSelectedCountry">—</strong>
+        <span><b id="geoSelectedCount">—</b> observed public IPs</span>
+      </div>
+      <div class="map-overlay"><span class="map-overlay-icon">✦</span><div><b id="atlasHeadline">Global network presence.</b><span id="atlasSubhead">Discovering observed countries…</span></div></div>
+      <span class="map-illustrative" id="geoNote">Illustrative topology</span>
+      <div class="map-coordinates">FEELNET <span>GLOBAL ATLAS</span></div>
+    </div>
+    <div class="atlas-bottom"><div id="geoLegend"><span class="legend-mark gold"></span> Global network visualization <span class="legend-mark muted"></span> Visual representation</div><div>In Feels We Trust <span class="accent-text">✦</span></div></div>
+    <div class="country-section" id="countrySection" hidden>
+      <div class="country-heading"><span><strong>Countries observed</strong><small>Country-level GeoIP · public IP counts</small></span><span id="countryStats">—</span></div>
+      <div class="country-list" id="countryList" aria-label="Observed countries"></div>
+      <div class="geo-credit">Country classification by <a href="https://db-ip.com" target="_blank" rel="noopener noreferrer">DB-IP Country Lite</a> · Approximate geolocation</div>
+    </div>
+  </section>
+
+  <section class="peer-composition" aria-label="Observed peer composition">
+    <div class="composition-title"><span class="composition-mark">◈</span><div><strong>Peer reach</strong><small>How our two observers see the network</small></div></div>
+    <div class="composition-viz"><div class="composition-track" role="img" aria-label="Shared and unique peer distribution"><span class="shared" id="sharedBar"></span><span class="node1" id="node1Bar"></span><span class="node2" id="node2Bar"></span></div><div class="composition-legend"><span><i class="shared"></i> Shared across observers <b id="sharedCount">—</b></span><span><i class="node1"></i> Node 1 only <b id="n1only">—</b></span><span><i class="node2"></i> Node 2 only <b id="n2only">—</b></span></div></div>
+  </section>
+
+  <div class="bottom-grid">
+    <section class="panel trend" id="history" aria-labelledby="history-title">
+      <div class="panel-bar"><div><div class="section-overline">NETWORK ACTIVITY</div><h2 id="history-title">Peer history</h2></div><div class="periods" role="group" aria-label="History range"><button class="period active" data-range="24h" aria-pressed="true">24H</button><button class="period" data-range="7d" aria-pressed="false">7D</button><button class="period" data-range="30d" aria-pressed="false">30D</button></div></div>
+      <div class="history-meta"><div><strong id="trendValue">—</strong><span>Observed peer IDs</span></div><span class="history-window" id="windowLabel">Data coverage —</span></div>
+      <svg id="trendChart" viewBox="0 0 700 220" preserveAspectRatio="none" aria-label="Historical observed peers"></svg>
+      <div class="chart-bottom"><span id="chartStart">—</span><span id="chartEnd">—</span></div><p class="chart-note" id="chartNote">Network activity over time</p>
+    </section>
+    <section class="panel observers" id="observers" aria-label="Observer nodes">
+      <div class="panel-bar"><div><div class="section-overline">NETWORK STATUS</div><h2>Node health</h2></div><span class="dot-group"><i></i><i></i><i></i></span></div>
+      <div class="observer" id="node1"><div class="observer-id"><span class="server-icon">▧</span><div><strong>Node 1</strong><small>Primary observation point</small></div></div><span class="observer-status">Checking</span><div class="observer-stats"><div><small>Height</small><b class="n-height">—</b></div><div><small>P2P links</small><b class="n-connections">—</b></div><div><small>Peer IDs</small><b class="n-peers">—</b></div></div></div>
+      <div class="observer" id="node2"><div class="observer-id"><span class="server-icon">▧</span><div><strong>Node 2</strong><small>Secondary observation point</small></div></div><span class="observer-status">Checking</span><div class="observer-stats"><div><small>Height</small><b class="n-height">—</b></div><div><small>P2P links</small><b class="n-connections">—</b></div><div><small>Peer IDs</small><b class="n-peers">—</b></div></div></div>
+    </section>
+  </div>
+  <footer><span><strong>FEELNET</strong> — Powered by Feelcoin</span><span>Mine it. Spend it. Shape it. <b>In Feels We Trust.</b></span></footer>
+</main>
+<script src="./assets/dashboard.js" defer></script>
+<script src="./assets/feelnet-v15.js" defer></script>
+</body>
+</html>
